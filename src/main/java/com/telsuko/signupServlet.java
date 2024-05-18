@@ -18,7 +18,12 @@ import javax.servlet.http.Part;
                  maxRequestSize = 1024 * 1024 * 5,
                  location = "C:/Users/sairam/sairam1/eclipse-workspace/DemoApp2/images/profiles")   // 5MB
 public class signupServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");

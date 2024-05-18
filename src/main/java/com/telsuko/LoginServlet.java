@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
             response.sendRedirect("index.jsp");
-        } else {
+        } else { 
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<html><body>");
