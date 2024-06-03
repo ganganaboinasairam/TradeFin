@@ -8,17 +8,8 @@ import java.sql.SQLException;
 
 public class Common {
 
-    private static final String url = "jdbc:oracle:thin:@localhost:1521:XE";
-    private static final String user = "SAIRAM";
-    private static final String password = "SAIRAM";
-
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(url, user, password);
-        
-    }
-
     public void storeUserData(String username, String email, String password) {
-        try (Connection conn = getConnection()) {
+        try (Connection conn = DatabaseConnectionManager.getConnection()) {
             String sql = "INSERT INTO USER_DATA (username, email, password) VALUES (?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             	System.out.println("//////////////////inside store user data method//////////////////");
@@ -36,7 +27,7 @@ public class Common {
 
     public boolean validateUser(String username, String password) {
         String sql = "SELECT * FROM USER_DATA WHERE username = ? AND password = ?";
-        try (Connection conn = getConnection();
+        try (Connection conn = DatabaseConnectionManager.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, username);
             stmt.setString(2, password);
